@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using JetBrains.Annotations;
 
 [System.Serializable]
 public class Boundary
@@ -16,9 +17,25 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidBody;
 
+    public GameObject shot;
+    public Transform shotSpawn;
+
+    public float fireRate;
+    private float nextFire;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, transform.position, transform.rotation);
+        }
     }
 
     void FixedUpdate()
