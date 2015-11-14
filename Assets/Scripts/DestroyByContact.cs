@@ -28,6 +28,7 @@ public class DestroyByContact : MonoBehaviour
         {
             Transform playerTransform = other.GetComponent<Transform>();
 
+            // TODO: cleanup playerExplosion
             Instantiate(playerExplosion, playerTransform.position, playerTransform.rotation);
 
         }
