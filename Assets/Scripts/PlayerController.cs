@@ -23,9 +23,12 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
     private float nextFire;
 
+    private AudioSource audio;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,7 +37,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
+
             Instantiate(shot, transform.position, transform.rotation);
+
+            audio.Play();
         }
     }
 
