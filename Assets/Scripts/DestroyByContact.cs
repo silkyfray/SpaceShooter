@@ -37,6 +37,7 @@ public class DestroyByContact : MonoBehaviour
             Transform playerTransform = other.GetComponent<Transform>();
 
             Instantiate(playerExplosion, playerTransform.position, playerTransform.rotation);
+            gameController.GameOver();
         }
 
         Destroy(other.gameObject);
